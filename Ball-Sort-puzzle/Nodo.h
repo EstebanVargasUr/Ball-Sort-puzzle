@@ -7,6 +7,7 @@ private:
     Nodo *ant;
 
 public:
+    Nodo();
     Nodo(string, Nodo*, Nodo*);
 
     void setColor(string);
