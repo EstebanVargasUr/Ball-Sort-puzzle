@@ -7,7 +7,7 @@ Movimientos::Movimientos() {
 }
 
 void Movimientos::push(string color) {
-	
+	dato = new Nodo();
 	dato->setColor(color);
 	dato->setNodoSiguiente(NULL);
 

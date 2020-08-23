@@ -8,7 +8,7 @@ Tubo::Tubo() {
 void Tubo::push(string color)
 {
 	dato = new Nodo();
-	dato->getColor() = color;
+	dato->setColor(color);
 	dato->setNodoSiguiente(NULL);
 	if (tope == NULL)
 	{
