@@ -154,6 +154,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Ball-Sort-puzzle.cpp" />
+    <ClCompile Include="Juego.cpp" />
     <ClCompile Include="Nodo.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -164,6 +165,7 @@
     <ClCompile Include="Tubo.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Juego.h" />
     <ClInclude Include="Nodo.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Tubo.h" />
