@@ -7,8 +7,9 @@ private:
 	Nodo* dato;
 
 public:
+	Tubo();
 	void push(string);
-	void pop();
-	void top();
+	string pop();
+	string top();
 };
 
