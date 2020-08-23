@@ -9,9 +9,9 @@
 
 // add headers that you want to pre-compile here
 #include<iostream>
-#include<string>
-#include<vector>
-#include<math.h>
+#include<stdlib.h>
+
+using namespace std;
 
 //SFML Include
 #include<SFML/System.hpp>
