@@ -3,31 +3,21 @@
 
 Tubo::Tubo() {
 	tope = NULL;
-	dato = NULL;
 }
 void Tubo::push(string color)
 {
-	dato = new Nodo();
-	dato->setColor(color);
-	dato->setNodoSiguiente(NULL);
-	if (tope == NULL)
-	{
-		dato->setNodoAnterior(NULL);
-		tope = dato;
-	}
-	else
-	{
-		dato->setNodoAnterior(tope);
-		tope->setNodoSiguiente(dato);
-		tope = dato;
-	}
+	Nodo* aux = new Nodo();
+	aux->setColor(color);
+	aux->setNodoSiguiente(tope);
+	tope = aux;
 }
 string Tubo::pop()
 {
 	string color;
 	color = tope->getColor();
-	tope = tope->getNodoAnterior();
-	tope->setNodoSiguiente(NULL);
+	Nodo* aux = tope;
+	tope = aux->getNodoSiguiente();
+	delete aux;
 	return color;
 }
 

@@ -4,7 +4,6 @@ class Tubo
 {
 private:
 	Nodo* tope;
-	Nodo* dato;
 
 public:
 	Tubo();
