@@ -9,5 +9,6 @@ int main()
     Juego* Ventana;
     Ventana = new Juego(1200, 720, "Ball Sort Puzzle");
 
+
     return 0;
 }
