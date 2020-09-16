@@ -7,16 +7,17 @@ Juego::Juego(int resolucion_x, int resolucion_y, string Titulo)
 	
     RenderWindow Ventana1(sf::VideoMode(resolucion_x, resolucion_y), Titulo);
   
-    Texture texture;
-    if (!texture.loadFromFile("Circulo.png"))
-    {
-        // error...
-    }
-    texture.setSmooth(true);
-    Sprite sprite;
+    Texture texture,texture2;
+    texture.loadFromFile("logo.png");
+    texture2.loadFromFile("fondo.jpg");
+
+    Sprite sprite, sprite2;
     sprite.setTexture(texture);
-    sprite.setPosition(Vector2f(500.f, 400.f));
-    sprite.setColor(sf::Color(0, 255, 0));
+    sprite.setPosition(Vector2f(400.f, 20.f));
+    sprite.setScale(0.6f, 0.6f);
+    texture.setSmooth(true);
+    sprite2.setTexture(texture2);
+    sprite2.setScale(0.7f,0.7f);
     while (Ventana1.isOpen())
     {
         Event event;
@@ -27,6 +28,7 @@ Juego::Juego(int resolucion_x, int resolucion_y, string Titulo)
         }
 
         Ventana1.clear();
+        Ventana1.draw(sprite2);
         Ventana1.draw(sprite);
         Ventana1.display();
     }
