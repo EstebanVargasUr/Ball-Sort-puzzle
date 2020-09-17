@@ -7,10 +7,20 @@ class  Juego
 {
 public:
 
-	 Juego(int resolucion_x, int resolucion_y, string Titulo); //Contructor que va a inicializar la ventana
+	 Juego(int resolucion_x, int resolucion_y); //Contructor que va a inicializar la ventana
 	 
-
+	 void ManejoEventos();
+	 void ManejoComponentes();
 private:
 
+	Event event;
 
+	//Texturas
+	Texture	BtnJugarTx;
+	Texture LogoInicialTx;
+	Texture FondoMenuTx;
+	//Sprites
+	Sprite BtnJugarSpt;
+	Sprite LogoInicialSpt;
+	Sprite FondoMenuSpt;
 };
