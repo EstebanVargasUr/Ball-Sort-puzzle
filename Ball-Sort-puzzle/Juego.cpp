@@ -10,7 +10,9 @@ int Escena = 0;
 int lim = 0;
 Event event;
 RenderWindow Ventana1(VideoMode(1200, 700), "Menu inicial");
-
+Tubo* Tubo1 = new Tubo();
+Tubo* Tubo2 = new Tubo();
+Tubo* Tubo3 = new Tubo();
 Juego::Juego()
 {
     Image icon;
@@ -75,12 +77,10 @@ void Juego::ManejoComponentesV1() //Se establecen texturas y sprites
     BtnJugarSpt.setTexture(BtnJugarTx);
     BtnJugarSpt.setPosition(Vector2f(460.f, 290.f));
     BtnJugarSpt.setScale(0.8, 0.8);
-    
-    
-
+   
     ManejoBolasLvl1();
 }
-
+int BolitaSeleccionada = 0;
 void Juego::ManejoEventos()
 {
     Vector2i posicion_mouse;
@@ -95,14 +95,44 @@ void Juego::ManejoEventos()
             Ventana1.setTitle("NIVEL 1");
         }
     }
+
+   
+    if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left && Escena == 1 && lim == 1)
+    {
+        if (Bolitas[4].getGlobalBounds().contains(posicion_mouse.x, posicion_mouse.y))
+        {
+            cout << "mueve";
+            Bolitas[4].setPosition(300, 100);
+            BolitaSeleccionada = 1;
+        }
+    }
+
+    if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left && Escena == 1 && BolitaSeleccionada == 1 || BolitaSeleccionada == 3)
+    {
+        if (TubosEnsayo[1].getGlobalBounds().contains(posicion_mouse.x, posicion_mouse.y))
+        {
+            cout << "mueveTubo 2 | ";
+            Bolitas[4].setPosition(470, 100);
+            BolitaSeleccionada = 2;
+
+        }    
+    }
+    
+    if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left && Escena == 1 && BolitaSeleccionada == 1|| BolitaSeleccionada == 2)
+    {
+        if (TubosEnsayo[2].getGlobalBounds().contains(posicion_mouse.x, posicion_mouse.y))
+        {
+            cout << "mueveTubo 3 | ";
+            Bolitas[4].setPosition(640, 100);
+            BolitaSeleccionada = 3;
+        }
+    }
 }
 
 
 void Juego::ManejoBolasLvl1()
 {
-    Tubo* Tubo1 = new Tubo();
-    Tubo* Tubo2 = new Tubo();
-    Tubo* Tubo3 = new Tubo();
+    
 
     TuboEnsayoTx.loadFromFile("TuboEnsayoB.png");
     TuboEnsayoTx.setSmooth(true);
