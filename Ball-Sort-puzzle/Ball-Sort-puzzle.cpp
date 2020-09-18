@@ -7,7 +7,7 @@ using namespace std;
 int main()
 {
     Juego* Ventana;
-    Ventana = new Juego(1200, 720);
+    Ventana = new Juego();
    
     return 0;
 }

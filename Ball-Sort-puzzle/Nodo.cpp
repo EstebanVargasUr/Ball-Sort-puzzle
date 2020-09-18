@@ -2,22 +2,22 @@
 #include "Nodo.h"
 
 Nodo::Nodo() {
-	color = "";
+	
 	sig = NULL;
 	ant = NULL;
 }
 
-Nodo::Nodo(string _color, Nodo* arr = NULL, Nodo* aba = NULL) {
-	color = _color;
+Nodo::Nodo(Sprite _bolita, Nodo* arr = NULL, Nodo* aba = NULL) {
+	bolita = _bolita;
 	sig = arr;
 	ant = aba;
 }
 
-void Nodo::setColor(string _color) {
-	color = _color;
+void Nodo::setBolita(Sprite _bolita) {
+	bolita = _bolita;
 }
-string Nodo::getColor() {
-	return color;
+Sprite Nodo::getBolita() {
+	return bolita;
 }
 void Nodo::setNodoSiguiente(Nodo* arr) {
 	sig = arr;

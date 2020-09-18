@@ -7,20 +7,28 @@ class  Juego
 {
 public:
 
-	 Juego(int resolucion_x, int resolucion_y); //Contructor que va a inicializar la ventana
+	 Juego();
 	 
 	 void ManejoEventos();
-	 void ManejoComponentes();
+	 void ManejoComponentesV1();
+	 void ManejoBolasLvl1();
+
 private:
 
-	Event event;
-
+	int CantBolas = 0;
+	int CantTubos = 0;
+	Sprite* Bolitas = NULL;
+	Sprite* TubosEnsayo = NULL;
 	//Texturas
 	Texture	BtnJugarTx;
 	Texture LogoInicialTx;
 	Texture FondoMenuTx;
+	Texture TuboEnsayoTx;
+	Texture BolitaTx;
 	//Sprites
 	Sprite BtnJugarSpt;
 	Sprite LogoInicialSpt;
 	Sprite FondoMenuSpt;
+	Sprite TuboEnsayoSpt;
+	Sprite BolitaSpt1;
 };

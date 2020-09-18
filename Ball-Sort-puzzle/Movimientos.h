@@ -1,5 +1,6 @@
 #pragma once
 #include "Nodo.h"
+using namespace sf;
 class Movimientos
 {
 	private:
@@ -9,10 +10,10 @@ class Movimientos
 
 	public:
 		Movimientos();
-		void push(string);
+		void push(Sprite);
 			
-		string pop();
+		Sprite pop();
 			
-		string top();
+		Sprite top();
 };
 

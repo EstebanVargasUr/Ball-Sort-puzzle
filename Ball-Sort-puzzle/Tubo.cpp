@@ -4,24 +4,24 @@
 Tubo::Tubo() {
 	tope = NULL;
 }
-void Tubo::push(string color)
+void Tubo::push(Sprite bolita)
 {
 	Nodo* aux = new Nodo();
-	aux->setColor(color);
+	aux->setBolita(bolita);
 	aux->setNodoSiguiente(tope);
 	tope = aux;
 }
-string Tubo::pop()
+Sprite Tubo::pop()
 {
-	string color;
-	color = tope->getColor();
+	Sprite bolita;
+	bolita = tope->getBolita();
 	Nodo* aux = tope;
 	tope = aux->getNodoSiguiente();
 	delete aux;
-	return color;
+	return bolita;
 }
 
-string Tubo::top()
+Sprite Tubo::top()
 {
-	return tope->getColor();
+	return tope->getBolita();
 }

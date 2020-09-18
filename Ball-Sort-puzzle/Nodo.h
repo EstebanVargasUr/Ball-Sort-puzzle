@@ -1,20 +1,22 @@
 #pragma once
+
+using namespace sf;
 class Nodo
 {
 private:
-    string color;
+    Sprite bolita;
     Nodo *sig;
     Nodo *ant;
 
 public:
     Nodo();
-    Nodo(string, Nodo*, Nodo*);
+    Nodo(Sprite, Nodo*, Nodo*);
 
-    void setColor(string);
+    void setBolita(Sprite);
     void setNodoSiguiente(Nodo*);
     void setNodoAnterior(Nodo*);
 
-    string getColor();
+    Sprite getBolita();
     Nodo* getNodoSiguiente();
     Nodo* getNodoAnterior();
 };
