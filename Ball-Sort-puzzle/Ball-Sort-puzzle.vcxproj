@@ -155,7 +155,6 @@
   <ItemGroup>
     <ClCompile Include="Ball-Sort-puzzle.cpp" />
     <ClCompile Include="Juego.cpp" />
-    <ClCompile Include="Juego2.cpp" />
     <ClCompile Include="Movimientos.cpp" />
     <ClCompile Include="Nodo.cpp" />
     <ClCompile Include="pch.cpp">
@@ -168,7 +167,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Juego.h" />
-    <ClInclude Include="Juego2.h" />
     <ClInclude Include="Movimientos.h" />
     <ClInclude Include="Nodo.h" />
     <ClInclude Include="pch.h" />

@@ -2,21 +2,21 @@
 #include "Nodo.h"
 
 Nodo::Nodo() {
-	
+	bolita = NULL;
 	sig = NULL;
 	ant = NULL;
 }
 
-Nodo::Nodo(Sprite _bolita, Nodo* arr = NULL, Nodo* aba = NULL) {
+Nodo::Nodo(int _bolita, Nodo* arr = NULL, Nodo* aba = NULL) {
 	bolita = _bolita;
 	sig = arr;
 	ant = aba;
 }
 
-void Nodo::setBolita(Sprite _bolita) {
+void Nodo::setBolita(int _bolita) {
 	bolita = _bolita;
 }
-Sprite Nodo::getBolita() {
+int Nodo::getBolita() {
 	return bolita;
 }
 void Nodo::setNodoSiguiente(Nodo* arr) {

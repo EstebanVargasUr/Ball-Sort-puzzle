@@ -6,7 +6,7 @@ Movimientos::Movimientos() {
 	dato = NULL;
 }
 
-void Movimientos::push(Sprite bolita) {
+void Movimientos::push(int bolita) {
 	dato = new Nodo();
 	dato->setBolita(bolita);
 	dato->setNodoSiguiente(NULL);
@@ -20,7 +20,7 @@ void Movimientos::push(Sprite bolita) {
 
 	fin = dato;
 }
-Sprite Movimientos::pop(){
+int Movimientos::pop(){
 	Nodo* aux = frente;
 
 	if (frente == fin) {
@@ -30,10 +30,10 @@ Sprite Movimientos::pop(){
 	else {
 		frente = frente->getNodoSiguiente();
 	}
-	Sprite bolita = aux->getBolita();
+	int bolita = aux->getBolita();
 	delete aux;
 	return bolita;
 }
-Sprite Movimientos::top() {
+int Movimientos::top() {
 	return frente->getBolita();
 }

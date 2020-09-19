@@ -10,8 +10,8 @@ private:
 
 public:
 	Tubo();
-	void push(Sprite);
-	Sprite pop();
-	Sprite top();
+	void push(int);
+	int pop();
+	int top();
 };
 

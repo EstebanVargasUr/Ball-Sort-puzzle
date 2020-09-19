@@ -4,19 +4,19 @@ using namespace sf;
 class Nodo
 {
 private:
-    Sprite bolita;
+    int bolita;
     Nodo *sig;
     Nodo *ant;
 
 public:
     Nodo();
-    Nodo(Sprite, Nodo*, Nodo*);
+    Nodo(int, Nodo*, Nodo*);
 
-    void setBolita(Sprite);
+    void setBolita(int);
     void setNodoSiguiente(Nodo*);
     void setNodoAnterior(Nodo*);
 
-    Sprite getBolita();
+    int getBolita();
     Nodo* getNodoSiguiente();
     Nodo* getNodoAnterior();
 };

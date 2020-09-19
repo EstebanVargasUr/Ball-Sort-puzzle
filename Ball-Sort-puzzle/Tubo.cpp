@@ -4,16 +4,16 @@
 Tubo::Tubo() {
 	tope = NULL;
 }
-void Tubo::push(Sprite bolita)
+void Tubo::push(int bolita)
 {
 	Nodo* aux = new Nodo();
 	aux->setBolita(bolita);
 	aux->setNodoSiguiente(tope);
 	tope = aux;
 }
-Sprite Tubo::pop()
+int Tubo::pop()
 {
-	Sprite bolita;
+	int bolita;
 	bolita = tope->getBolita();
 	Nodo* aux = tope;
 	tope = aux->getNodoSiguiente();
@@ -21,7 +21,7 @@ Sprite Tubo::pop()
 	return bolita;
 }
 
-Sprite Tubo::top()
+int Tubo::top()
 {
 	return tope->getBolita();
 }

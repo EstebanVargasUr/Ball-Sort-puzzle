@@ -10,10 +10,10 @@ class Movimientos
 
 	public:
 		Movimientos();
-		void push(Sprite);
+		void push(int);
 			
-		Sprite pop();
+		int pop();
 			
-		Sprite top();
+		int top();
 };
 

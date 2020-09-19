@@ -1,26 +1,25 @@
 #pragma once
 #include "SFML\Graphics.hpp"
+#include "Tubo.h"
 using namespace sf;
 using namespace std;
 
-class  Juego
+class Juego
 {
-public:
-
-	 Juego();
-	 
-	 void ManejoEventos();
-	 void ManejoComponentesV1();
-	 void ManejoBolasLvl1();
-
 private:
 
-	int Escena = 0;
-	int lim = 0;
-	int CantBolas = 0;
-	int CantTubos = 0;
-	Sprite* Bolitas = NULL;
-	Sprite* TubosEnsayo = NULL;
+	RenderWindow window;
+	Event event;
+	Tubo* tubos;
+	Image icon;
+
+	int Escena;
+	int lim;
+	int CantBolas;
+	int CantTubos;
+	int BolitaSeleccionada;
+	int BolaActual;
+
 	//Texturas
 	Texture	BtnJugarTx;
 	Texture LogoInicialTx;
@@ -33,4 +32,16 @@ private:
 	Sprite FondoMenuSpt;
 	Sprite TuboEnsayoSpt;
 	Sprite BolitaSpt1;
+	Sprite* Bolitas;
+	Sprite* TubosEnsayo;
+	
+
+public:
+
+	void CargarJuego();
+	void Cargartexturas();
+	void CargaEscenas();
+	void ManejoBolasLvl1();
+
 };
+
