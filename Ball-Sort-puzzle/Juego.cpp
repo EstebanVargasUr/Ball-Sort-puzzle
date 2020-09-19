@@ -6,9 +6,7 @@ using namespace std;
 using namespace sf;
 
 
-int Escena = 0;
-int lim = 0;
-Event event;
+/*Event event;
 RenderWindow Ventana1(VideoMode(1200, 700), "Menu inicial");
 Tubo* Tubo1 = new Tubo();
 Tubo* Tubo2 = new Tubo();
@@ -202,4 +200,4 @@ void Juego::ManejoBolasLvl1()
             Tubo1->push(Bolitas[3]);
         }
     }
-}
+}*/
