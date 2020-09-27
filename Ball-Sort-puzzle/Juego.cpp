@@ -6,6 +6,10 @@ void Juego::CargarJuego() {
     icon.loadFromFile("Circulo.png");
     window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
     Cargartexturas();
+    tubo = 0;
+    bolasTubo1 = 4;
+    bolasTubo2 = 4;
+    bolasTubo3 = 0;
     // run the program as long as the window is open
     while (window.isOpen())
     {
@@ -25,7 +29,6 @@ void Juego::CargarJuego() {
             case Event::MouseButtonPressed:
                 if (event.mouseButton.button == Mouse::Left)
                 {
-
                     if (Escena == 0) {
                         if (BtnJugarSpt.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y))
                         {
@@ -43,39 +46,196 @@ void Juego::CargarJuego() {
                     }
 
                     if (Escena == 1) {
-                        if (tubos[0].top() != 500) {
+                        // Tubo #1
+                        if (tubos[0].top() != 500 && BolitaSeleccionada != 2 && BolitaSeleccionada != 3) {
                             if (Bolitas[tubos[0].top()].getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y) && lim == 1)
                             {
-                                cout << "mueve";
                                 BolaActual = tubos[0].top();
                                 Bolitas[tubos[0].top()].setPosition(410, 130);
                                 BolitaSeleccionada = 1;
+                                bolasTubo1 = bolasTubo1 - 1;
+                            }
+                            if (tubo == 3  && bolasTubo3!=4)
+                            {
+                                
+                                if (bolasTubo3 != 0) {
+                                    if (Bolitas[tubos[0].top()].getColor() == Bolitas[tubos[2].top()].getColor()) {
+                                        Bolitas[tubos[0].top()].setPosition(810, saberXY(bolasTubo3));
+                                        tubos[2].push(tubos[0].pop());
+                                        bolasTubo3 = bolasTubo3 + 1;
+                                        BolitaSeleccionada = 0;
+                                        tubo = 0;
+                                    }
+                                }
+                                else {
+                                   
+                                    Bolitas[tubos[0].top()].setPosition(810, saberXY(bolasTubo3));
+                                    tubos[2].push(tubos[0].pop());
+                                    bolasTubo3 = bolasTubo3 + 1;
+                                    BolitaSeleccionada = 0;
+                                    tubo = 0;
+                                }
+                                
+                            }
+                            if (tubo == 2 && bolasTubo2 != 4)
+                            {
+                                cout << "Entra" << endl;
+                                if (bolasTubo2 != 0) {
+                                    
+                                    if (Bolitas[tubos[0].top()].getColor() == Bolitas[tubos[1].top()].getColor()) {
+                                        Bolitas[tubos[0].top()].setPosition(610, saberXY(bolasTubo2));
+                                        tubos[1].push(tubos[0].pop());
+                                        bolasTubo2 = bolasTubo2 + 1;
+                                        BolitaSeleccionada = 0;
+                                        tubo = 0;
+                                    }
+                                }
+                                else {
+                                    Bolitas[tubos[0].top()].setPosition(610, saberXY(bolasTubo2));
+                                    tubos[1].push(tubos[0].pop());
+                                    bolasTubo2 = bolasTubo2 + 1;
+                                    BolitaSeleccionada = 0;
+                                    tubo = 0;
 
+                                }
+                            }
+                            if (tubo == 1&& bolasTubo1 !=4)
+                            {
+                                cout << "Entra" << endl;
+                                Bolitas[tubos[0].top()].setPosition(410, saberXY(bolasTubo1));
+                                bolasTubo1 = bolasTubo1 + 1;
+                                BolitaSeleccionada = 0;
+                                tubo = 0;
                             }
                         }
-                        
-                        if (tubos[1].top() != 500) {
+                       
+                    //TUBO #2
+                        if (tubos[1].top() != 500&&BolitaSeleccionada!=1&& BolitaSeleccionada != 3) {
                             if (Bolitas[tubos[1].top()].getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y) && lim == 1)
                             {
-                                cout << "mueve";
+                                
                                 BolaActual = tubos[1].top();
                                 Bolitas[tubos[1].top()].setPosition(610, 130);
                                 BolitaSeleccionada = 2;
+                                bolasTubo2 = bolasTubo2 - 1;
 
                             }
-                        }
+                            if (tubo == 3 && bolasTubo3 != 4)
+                            {
+                                if (bolasTubo3 != 0) {
+                                    if (Bolitas[tubos[1].top()].getColor() == Bolitas[tubos[2].top()].getColor()) {
+                                        Bolitas[tubos[1].top()].setPosition(810, saberXY(bolasTubo3));
+                                        tubos[2].push(tubos[1].pop());
+                                        bolasTubo3 = bolasTubo3 + 1;
+                                        BolitaSeleccionada = 0;
+                                        tubo = 0;
+                                    }
+                                }
+                                else {
 
-                        if (tubos[2].top() != 500) {
+                                    Bolitas[tubos[1].top()].setPosition(810, saberXY(bolasTubo3));
+                                    tubos[2].push(tubos[1].pop());
+                                    bolasTubo3 = bolasTubo3 + 1;
+                                    BolitaSeleccionada = 0;
+                                    tubo = 0;
+                                }
+
+                            }
+                            if (tubo == 1 && bolasTubo1 != 4)
+                            {
+                                if (bolasTubo1 != 0) {
+                                    if (Bolitas[tubos[1].top()].getColor() == Bolitas[tubos[0].top()].getColor()) {
+                                        Bolitas[tubos[1].top()].setPosition(410, saberXY(bolasTubo1));
+                                        tubos[0].push(tubos[1].pop());
+                                        bolasTubo1 = bolasTubo1 + 1;
+                                        BolitaSeleccionada = 0;
+                                        tubo = 0;
+                                    }
+                                }
+                                else {
+                                    Bolitas[tubos[1].top()].setPosition(410, saberXY(bolasTubo1));
+                                    tubos[0].push(tubos[1].pop());
+                                    bolasTubo1 = bolasTubo1 + 1;
+                                    BolitaSeleccionada = 0;
+                                    tubo = 0;
+
+                                }
+                            }
+                            if (tubo == 2 && bolasTubo2 != 4)
+                            {
+                                cout << "Entra" << endl;
+                                Bolitas[tubos[1].top()].setPosition(610, saberXY(bolasTubo2));
+                                bolasTubo2 = bolasTubo2 + 1;
+                                BolitaSeleccionada = 0;
+                                tubo = 0;
+                            }
+                        }
+                        //Tubo #3
+                        if (tubos[2].top() != 500&& BolitaSeleccionada != 1 && BolitaSeleccionada != 2) {
                             if (Bolitas[tubos[2].top()].getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y) && lim == 1)
                             {
-                                cout << "mueve";
+                                
                                 BolaActual = tubos[2].top();
                                 Bolitas[tubos[2].top()].setPosition(810, 130);
                                 BolitaSeleccionada = 3;
+                                bolasTubo3 = bolasTubo3 - 1;
 
+                            }
+                            if (tubo == 1 && bolasTubo1 != 4)
+                            {
+
+                                if (bolasTubo1 != 0) {
+                                    if (Bolitas[tubos[2].top()].getColor() == Bolitas[tubos[0].top()].getColor()) {
+                                        Bolitas[tubos[2].top()].setPosition(410, saberXY(bolasTubo1));
+                                        tubos[0].push(tubos[2].pop());
+                                        bolasTubo1 = bolasTubo1 + 1;
+                                        BolitaSeleccionada = 0;
+                                        tubo = 0;
+                                    }
+                                }
+                                else {
+
+                                    Bolitas[tubos[2].top()].setPosition(410, saberXY(bolasTubo1));
+                                    tubos[0].push(tubos[2].pop());
+                                    bolasTubo1 = bolasTubo1 + 1;
+                                    BolitaSeleccionada = 0;
+                                    tubo = 0;
+                                }
+
+                            }
+                            if (tubo == 2 && bolasTubo2 != 4)
+                            {
+                                if (bolasTubo2 != 0) {
+
+                                    if (Bolitas[tubos[2].top()].getColor() == Bolitas[tubos[1].top()].getColor()) {
+                                        Bolitas[tubos[2].top()].setPosition(610, saberXY(bolasTubo2));
+                                        tubos[1].push(tubos[2].pop());
+                                        bolasTubo2 = bolasTubo2 + 1;
+                                        BolitaSeleccionada = 0;
+                                        tubo = 0;
+                                    }
+                                }
+                                else {
+                                    Bolitas[tubos[2].top()].setPosition(610, saberXY(bolasTubo2));
+                                    tubos[1].push(tubos[2].pop());
+                                    bolasTubo2 = bolasTubo2 + 1;
+                                    BolitaSeleccionada = 0;
+                                    tubo = 0;
+
+                                }
+                            }
+                            if (tubo == 3 && bolasTubo3 != 4)
+                            {
+                               
+                                Bolitas[tubos[2].top()].setPosition(810, saberXY(bolasTubo3));
+                                bolasTubo3 = bolasTubo3 + 1;
+                                BolitaSeleccionada = 0;
+                                tubo = 0;
                             }
                         }
                     }
+                  
+                   
 
 
                 }
@@ -86,30 +246,33 @@ void Juego::CargarJuego() {
 
                     if (TubosEnsayo[0].getGlobalBounds().contains(event.mouseMove.x, event.mouseMove.y))
                     {
-                        if (BolitaSeleccionada == 2 || BolitaSeleccionada == 3) {
+                        if (BolitaSeleccionada == 1 || BolitaSeleccionada == 2 || BolitaSeleccionada == 3) {
                             cout << "mueveTubo 1 | ";
                             Bolitas[BolaActual].setPosition(410, 130);
-                            BolitaSeleccionada = 1;
+                            tubo = 1;
+                           
                         }
 
                     }
 
                     if (TubosEnsayo[1].getGlobalBounds().contains(event.mouseMove.x, event.mouseMove.y))
                     {
-                        if (BolitaSeleccionada == 1 || BolitaSeleccionada == 3) {
+                        if (BolitaSeleccionada == 1 || BolitaSeleccionada == 2 || BolitaSeleccionada == 3) {
                             cout << "mueveTubo 2 | ";
                             Bolitas[BolaActual].setPosition(610, 130);
-                            BolitaSeleccionada = 2;
+                            tubo = 2;
+                            
                         }
 
                     }
 
                     if (TubosEnsayo[2].getGlobalBounds().contains(event.mouseMove.x, event.mouseMove.y))
                     {
-                        if (BolitaSeleccionada == 1 || BolitaSeleccionada == 2) {
+                        if (BolitaSeleccionada == 1 || BolitaSeleccionada == 2 || BolitaSeleccionada == 3) {
                             cout << "mueveTubo 3 | ";
                             Bolitas[BolaActual].setPosition(810, 130);
-                            BolitaSeleccionada = 3;
+                            tubo = 3;
+                           
                         }
 
                     }
@@ -220,6 +383,7 @@ void Juego::ManejoBolasLvl1()
             Bolitas[0].setPosition(410, 280);//1T2
             Bolitas[2].setPosition(410, 330);//1T3
             Bolitas[6].setPosition(410, 380); //1T4
+            
             tubos[0].push(6);
             tubos[0].push(2);
             tubos[0].push(0);
@@ -229,10 +393,35 @@ void Juego::ManejoBolasLvl1()
             Bolitas[7].setPosition(610, 280);//2T2
             Bolitas[1].setPosition(610, 330);//2T3
             Bolitas[5].setPosition(610, 380);//2T4
+           
+           
             tubos[1].push(5);
             tubos[1].push(1);
             tubos[1].push(7);
             tubos[1].push(3);
         }
-    
+      
 }
+int Juego::saberXY(int x) {
+    if (x == 0) {
+        y = 380;
+       
+        cout << "pego bien" << endl;
+    }
+    if (x == 1) {
+        y = 330;
+        
+        cout << "pego mal1" << endl;
+    }
+    if (x == 2) {
+        y = 280;
+        
+        cout << "pego mal2" << endl;
+    }
+    if (x == 3) {
+        y = 230;
+       
+        cout << "pego mal3" << endl;
+    }
+    return y;
+    }

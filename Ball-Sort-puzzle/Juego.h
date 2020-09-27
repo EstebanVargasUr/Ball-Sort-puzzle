@@ -19,6 +19,11 @@ private:
 	int CantTubos;
 	int BolitaSeleccionada;
 	int BolaActual;
+	int bolasTubo1;
+	int bolasTubo2;
+	int bolasTubo3;
+	int tubo;
+	int y;
 
 	//Texturas
 	Texture	BtnJugarTx;
@@ -42,6 +47,6 @@ public:
 	void Cargartexturas();
 	void CargaEscenas();
 	void ManejoBolasLvl1();
-
+	int saberXY(int);
 };
 
