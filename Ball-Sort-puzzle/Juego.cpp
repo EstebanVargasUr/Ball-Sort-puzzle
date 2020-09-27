@@ -43,6 +43,16 @@ void Juego::CargarJuego() {
                             CantTubos = 3;
                             ManejoBolasLvl1();
                         }
+                        if (BtnAcercaDeSpt.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y))
+                        {
+                            Escena = 6;
+                            window.setTitle("ACERCA DE");
+
+                        }
+                        if (BtnSalirSpt.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y))
+                        {
+                            window.close();
+                        }
                     }
 
                     if (Escena == 1) {
@@ -301,10 +311,25 @@ void Juego::Cargartexturas() {
     FondoMenuSpt.setTexture(FondoMenuTx);
     FondoMenuSpt.setScale(1, 1);
 
-    BtnJugarTx.loadFromFile("BtnJugar2.png");
+    UNATx.loadFromFile("acercaDe.png");
+    UNASpt.setTexture(UNATx);
+    UNASpt.setPosition(Vector2f(150.f, 10.f));
+    UNASpt.setScale(0.8f, 0.8f);
+
+    BtnJugarTx.loadFromFile("btnJugar3.png");
     BtnJugarSpt.setTexture(BtnJugarTx);
-    BtnJugarSpt.setPosition(Vector2f(460.f, 290.f));
-    BtnJugarSpt.setScale(0.8f, 0.8f);
+    BtnJugarSpt.setPosition(Vector2f(500.f, 280.f));
+    BtnJugarSpt.setScale(0.8f, 0.7f);
+
+    BtnAcercaDeTx.loadFromFile("btnAcercaDe.png");
+    BtnAcercaDeSpt.setTexture(BtnAcercaDeTx);
+    BtnAcercaDeSpt.setPosition(Vector2f(500.f, 400.f));
+    BtnAcercaDeSpt.setScale(0.8f, 0.7f);
+
+    BtnSalirTx.loadFromFile("btnSalir.png");
+    BtnSalirSpt.setTexture(BtnSalirTx);
+    BtnSalirSpt.setPosition(Vector2f(500.f, 520.f));
+    BtnSalirSpt.setScale(0.8f, 0.7f);
 
     TuboEnsayoTx.loadFromFile("TuboEnsayoB.png");
     TuboEnsayoTx.setSmooth(true);
@@ -325,6 +350,8 @@ void Juego::CargaEscenas() {
         window.draw(FondoMenuSpt);
         window.draw(LogoInicialSpt);
         window.draw(BtnJugarSpt);
+        window.draw(BtnAcercaDeSpt);
+        window.draw(BtnSalirSpt);
         window.display();
     }
 
@@ -344,6 +371,12 @@ void Juego::CargaEscenas() {
             window.draw(Bolitas[i]);
         }
 
+        window.display();
+    }
+    if (Escena == 6){
+        window.clear();
+        window.draw(FondoMenuSpt);
+        window.draw(UNASpt);
         window.display();
     }
 }

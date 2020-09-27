@@ -27,12 +27,18 @@ private:
 
 	//Texturas
 	Texture	BtnJugarTx;
+	Texture BtnAcercaDeTx;
+	Texture BtnSalirTx;
+	Texture UNATx;
 	Texture LogoInicialTx;
 	Texture FondoMenuTx;
 	Texture TuboEnsayoTx;
 	Texture BolitaTx;
 	//Sprites
 	Sprite BtnJugarSpt;
+	Sprite BtnAcercaDeSpt;
+	Sprite BtnSalirSpt;
+	Sprite UNASpt;
 	Sprite LogoInicialSpt;
 	Sprite FondoMenuSpt;
 	Sprite TuboEnsayoSpt;
