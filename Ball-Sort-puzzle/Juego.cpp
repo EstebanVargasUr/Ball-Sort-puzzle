@@ -16,16 +16,15 @@ void Juego::CargarJuego() {
         // check all the window's events that were triggered since the last iteration of the loop
         while (window.pollEvent(event))
         {
-
             switch (event.type)
             {
-                // window closed
+            // window closed
             case Event::Closed:
                 // "close requested" event: we close the window
                 window.close();
                 break;
 
-                // key pressed
+            // key pressed
             case Event::MouseButtonPressed:
                 if (event.mouseButton.button == Mouse::Left)
                 {
@@ -89,7 +88,6 @@ void Juego::CargarJuego() {
                             }
                             if (tubo == 2 && bolasTubo2 != 4)
                             {
-                                cout << "Entra" << endl;
                                 if (bolasTubo2 != 0) {
                                     
                                     if (Bolitas[tubos[0].top()].getColor() == Bolitas[tubos[1].top()].getColor()) {
@@ -111,7 +109,6 @@ void Juego::CargarJuego() {
                             }
                             if (tubo == 1&& bolasTubo1 !=4)
                             {
-                                cout << "Entra" << endl;
                                 Bolitas[tubos[0].top()].setPosition(410, saberXY(bolasTubo1));
                                 bolasTubo1 = bolasTubo1 + 1;
                                 BolitaSeleccionada = 0;
@@ -173,7 +170,6 @@ void Juego::CargarJuego() {
                             }
                             if (tubo == 2 && bolasTubo2 != 4)
                             {
-                                cout << "Entra" << endl;
                                 Bolitas[tubos[1].top()].setPosition(610, saberXY(bolasTubo2));
                                 bolasTubo2 = bolasTubo2 + 1;
                                 BolitaSeleccionada = 0;
@@ -257,7 +253,6 @@ void Juego::CargarJuego() {
                     if (TubosEnsayo[0].getGlobalBounds().contains(event.mouseMove.x, event.mouseMove.y))
                     {
                         if (BolitaSeleccionada == 1 || BolitaSeleccionada == 2 || BolitaSeleccionada == 3) {
-                            cout << "mueveTubo 1 | ";
                             Bolitas[BolaActual].setPosition(410, 130);
                             tubo = 1;
                            
@@ -268,7 +263,6 @@ void Juego::CargarJuego() {
                     if (TubosEnsayo[1].getGlobalBounds().contains(event.mouseMove.x, event.mouseMove.y))
                     {
                         if (BolitaSeleccionada == 1 || BolitaSeleccionada == 2 || BolitaSeleccionada == 3) {
-                            cout << "mueveTubo 2 | ";
                             Bolitas[BolaActual].setPosition(610, 130);
                             tubo = 2;
                             
@@ -279,7 +273,6 @@ void Juego::CargarJuego() {
                     if (TubosEnsayo[2].getGlobalBounds().contains(event.mouseMove.x, event.mouseMove.y))
                     {
                         if (BolitaSeleccionada == 1 || BolitaSeleccionada == 2 || BolitaSeleccionada == 3) {
-                            cout << "mueveTubo 3 | ";
                             Bolitas[BolaActual].setPosition(810, 130);
                             tubo = 3;
                            
@@ -294,7 +287,7 @@ void Juego::CargarJuego() {
             }
 
         }
-        
+        Victoria();
         CargaEscenas();
 
     }
@@ -438,23 +431,51 @@ void Juego::ManejoBolasLvl1()
 int Juego::saberXY(int x) {
     if (x == 0) {
         y = 380;
-       
-        cout << "pego bien" << endl;
     }
     if (x == 1) {
         y = 330;
-        
-        cout << "pego mal1" << endl;
     }
     if (x == 2) {
         y = 280;
-        
-        cout << "pego mal2" << endl;
     }
     if (x == 3) {
         y = 230;
-       
-        cout << "pego mal3" << endl;
     }
     return y;
+}
+
+void Juego::Victoria()
+{
+    TubosCompletados = 0;//Permite que no se encicle y sume mas de lo necesario al llenar un tubo
+
+    //Victoria para nivel 1
+    if (Escena == 1)
+    {
+        
+        if (bolasTubo1 == 4 || bolasTubo2 == 4 || bolasTubo3 == 4)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                if (TubosEnsayo[i].getGlobalBounds().contains(Bolitas[4].getPosition()) && TubosEnsayo[i].getGlobalBounds().contains(Bolitas[5].getPosition()))
+                {
+                    if (TubosEnsayo[i].getGlobalBounds().contains(Bolitas[6].getPosition()) && TubosEnsayo[i].getGlobalBounds().contains(Bolitas[7].getPosition()))
+                    {
+                        TubosCompletados = TubosCompletados + 1;
+                    }
+                }
+                if (TubosEnsayo[i].getGlobalBounds().contains(Bolitas[0].getPosition()) && TubosEnsayo[i].getGlobalBounds().contains(Bolitas[1].getPosition()))
+                {
+                    if (TubosEnsayo[i].getGlobalBounds().contains(Bolitas[2].getPosition()) && TubosEnsayo[i].getGlobalBounds().contains(Bolitas[3].getPosition()))
+                    {
+                        TubosCompletados = TubosCompletados + 1;
+                    }
+                }
+            }  
+        }   
+    
+        if (TubosCompletados == 2)
+        {
+            cout << "----->USTED ES UNA PERRA GANADORA<-----" << endl;
+        }
     }
+}

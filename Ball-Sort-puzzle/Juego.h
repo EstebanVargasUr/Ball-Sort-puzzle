@@ -13,17 +13,18 @@ private:
 	Tubo* tubos;
 	Image icon;
 
-	int Escena;
-	int lim;
-	int CantBolas;
-	int CantTubos;
-	int BolitaSeleccionada;
-	int BolaActual;
-	int bolasTubo1;
-	int bolasTubo2;
-	int bolasTubo3;
-	int tubo;
-	int y;
+	int Escena=0;
+	int lim=0;
+	int CantBolas=0;
+	int CantTubos=0;
+	int BolitaSeleccionada=0;
+	int BolaActual=0;
+	int bolasTubo1=0;
+	int bolasTubo2=0;
+	int bolasTubo3=0;
+	int tubo=0;
+	int y =0;
+	int TubosCompletados=0; //Muestra la cantidad de tubos que ya se encuentran llenos de forma correcta
 
 	//Texturas
 	Texture	BtnJugarTx;
@@ -47,12 +48,13 @@ private:
 	Sprite* TubosEnsayo;
 	
 
-public:
+	public:
 
 	void CargarJuego();
 	void Cargartexturas();
 	void CargaEscenas();
 	void ManejoBolasLvl1();
 	int saberXY(int);
+	void Victoria();
 };
 
