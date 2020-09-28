@@ -4,16 +4,19 @@ using namespace sf;
 class Movimientos
 {
 	private:
-		Nodo* frente;
-		Nodo* fin;
+		Nodo* tope;
+		Nodo* ini;
 		Nodo* dato;
 
+
 	public:
+
 		Movimientos();
-		void push(int);
+
+		void push(int,int, int);
 			
-		int pop();
+		Nodo* pop();
 			
-		int top();
+		Nodo* top();
 };
 

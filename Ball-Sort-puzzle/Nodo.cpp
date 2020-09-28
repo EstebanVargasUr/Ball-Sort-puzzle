@@ -31,3 +31,18 @@ void Nodo::setNodoAnterior(Nodo* aba) {
 Nodo* Nodo::getNodoAnterior() {
 	return ant;
 }
+void Nodo::setTuboDestino(int _tubo) {
+	tuboDestino = _tubo;
+}
+int Nodo::getTuboDestino()
+{
+	return tuboDestino;
+}
+void Nodo::setTuboOrigen(int _tuboV)
+{
+	tuboOrigen = _tuboV;
+}
+int Nodo::getTuboOrigen()
+{
+	return tuboOrigen;
+}

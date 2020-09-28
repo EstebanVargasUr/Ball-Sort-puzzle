@@ -1,39 +1,38 @@
 #include "pch.h"
 #include "Movimientos.h"
 Movimientos::Movimientos() {
-	frente = NULL;
-	fin = NULL;
+	tope = NULL;
+	ini = NULL;
 	dato = NULL;
 }
 
-void Movimientos::push(int bolita) {
+void Movimientos::push(int bolita, int tuboDestino, int tuboOrigen) {
+
 	dato = new Nodo();
 	dato->setBolita(bolita);
+	dato->setTuboDestino(tuboDestino);
+	dato->setTuboOrigen(tuboOrigen);
 	dato->setNodoSiguiente(NULL);
 
-	if (!frente) {
-		frente = dato;
+	if (tope == NULL)
+	{
+		dato->setNodoAnterior(NULL);
+		tope = dato;
 	}
-	else {
-		fin->setNodoSiguiente(dato);
+	else
+	{
+		dato->setNodoAnterior(tope);
+		tope->setNodoSiguiente(dato);
+		tope = dato;
 	}
-
-	fin = dato;
 }
-int Movimientos::pop(){
-	Nodo* aux = frente;
-
-	if (frente == fin) {
-		frente = NULL;
-		fin = NULL;
-	}
-	else {
-		frente = frente->getNodoSiguiente();
-	}
-	int bolita = aux->getBolita();
-	delete aux;
-	return bolita;
+Nodo* Movimientos::pop() {
+	Nodo* aux;
+	aux = tope;
+	tope = tope->getNodoAnterior();
+	tope->setNodoSiguiente(NULL);
+	return aux;
 }
-int Movimientos::top() {
-	return frente->getBolita();
+Nodo* Movimientos::top() {
+	return tope;
 }
