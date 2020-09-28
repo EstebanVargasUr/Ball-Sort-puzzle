@@ -39,6 +39,7 @@ private:
 	Texture FondoMenuTx;
 	Texture TuboEnsayoTx;
 	Texture BolitaTx;
+	Texture VictoriaTx;
 	//Sprites
 	Sprite BtnJugarSpt;
 	Sprite BtnAcercaDeSpt;
@@ -54,7 +55,7 @@ private:
 	Sprite BolitaSpt1;
 	Sprite* Bolitas;
 	Sprite* TubosEnsayo;
-	
+	Sprite VictoriaSpt;
 
 	public:
 

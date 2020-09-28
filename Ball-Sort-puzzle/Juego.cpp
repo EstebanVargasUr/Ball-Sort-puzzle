@@ -13,6 +13,8 @@ void Juego::CargarJuego() {
     // run the program as long as the window is open
     while (window.isOpen())
     {
+        
+        CargaEscenas();
         // check all the window's events that were triggered since the last iteration of the loop
         while (window.pollEvent(event))
         {
@@ -245,7 +247,25 @@ void Juego::CargarJuego() {
                             Escena = 0;
                         }
                     }
-                   
+
+                    if (Escena == 10)
+                    {
+                        if (BtnMenuSpt.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y))
+                        {
+                            Escena = 0;
+                        }
+
+                        if (BtnReiniciarSpt.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y))
+                        {   
+
+                        }
+
+                        if (BtnSigSpt.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y))
+                        {
+
+
+                        }
+                    }
 
 
                 }
@@ -291,9 +311,8 @@ void Juego::CargarJuego() {
             }
 
         }
+        
         Victoria();
-        CargaEscenas();
-
     }
 }
 
@@ -335,18 +354,18 @@ void Juego::Cargartexturas() {
 
     BtnMenuTx.loadFromFile("menu.png");
     BtnMenuSpt.setTexture(BtnMenuTx);
-    BtnMenuSpt.setPosition(Vector2f(50.f, 600.f));
-    BtnMenuSpt.setScale(0.5f, 0.4f);
+    BtnMenuSpt.setPosition(Vector2f(370.f, 308.f));
+    BtnMenuSpt.setScale(0.5f, 0.5f);
 
     BtnSigTx.loadFromFile("siguiente.png");
     BtnSigSpt.setTexture(BtnSigTx);
-    BtnSigSpt.setPosition(Vector2f(50.f, 600.f));
-    BtnSigSpt.setScale(0.5f, 0.4f);
+    BtnSigSpt.setPosition(Vector2f(730.f, 315));
+    BtnSigSpt.setScale(0.5f, 0.5f);
 
     BtnReiniciarTx.loadFromFile("reiniciar.png");
     BtnReiniciarSpt.setTexture(BtnReiniciarTx);
-    BtnReiniciarSpt.setPosition(Vector2f(50.f, 600.f));
-    BtnReiniciarSpt.setScale(0.5f, 0.4f);
+    BtnReiniciarSpt.setPosition(Vector2f(530.f, 300.f));
+    BtnReiniciarSpt.setScale(0.5f, 0.5f);
 
     TuboEnsayoTx.loadFromFile("TuboEnsayoB.png");
     TuboEnsayoTx.setSmooth(true);
@@ -357,6 +376,11 @@ void Juego::Cargartexturas() {
     BolitaTx.setSmooth(true);
     BolitaSpt1.setTexture(BolitaTx);
     BolitaSpt1.setScale(0.2f, 0.2f);
+
+    VictoriaTx.loadFromFile("gane.png");
+    VictoriaSpt.setTexture(VictoriaTx);
+    VictoriaSpt.setPosition(Vector2f(410, 80));
+    VictoriaSpt.setScale(1.3, 1.3);
 }
 
 void Juego::CargaEscenas() {
@@ -390,11 +414,22 @@ void Juego::CargaEscenas() {
 
         window.display();
     }
-    if (Escena == 6){
+    if (Escena == 6){ //Acerca de..
         window.clear();
         window.draw(FondoMenuSpt);
         window.draw(UNASpt);
         window.draw(BtnDevolverseSpt);
+        window.display();
+    }
+    if (Escena == 10)//Pantalla de victoria
+    {
+        window.clear();
+        window.draw(FondoMenuSpt);
+        window.draw(VictoriaSpt);
+        window.draw(BtnMenuSpt);
+        window.draw(BtnReiniciarSpt);
+        window.draw(BtnSigSpt);
+
         window.display();
     }
 }
@@ -500,7 +535,7 @@ void Juego::Victoria()
     
         if (TubosCompletados == 2)
         {
-            cout << "----->USTED ES UNA PERRA GANADORA<-----" << endl;
+            Escena = 10;
         }
     }
 }
