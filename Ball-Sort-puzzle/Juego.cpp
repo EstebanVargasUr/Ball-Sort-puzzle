@@ -34,6 +34,7 @@ void Juego::CargarJuego() {
                             tubos = new Tubo[3];
                             for (int i = 0; i < 3; i++)
                                 tubos[i].push(500);
+
                             TubosEnsayo = new Sprite[3];
                             CantBolas = 8;
                             CantTubos = 3;
@@ -318,7 +319,26 @@ void Juego::CargarJuego() {
 
                         if (BtnSigSpt.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y))
                         {
+                            if (NivelesGanados == 1)
+                            {
+                                Escena = 2;
+                                window.setTitle("NIVEL 2");
+                                Bolitas = new Sprite[12];
+                                tubos = new Tubo[4];
+                                for (int i = 0; i < 4; i++)
+                                    tubos[i].push(500);
 
+                                TubosEnsayo = new Sprite[4];
+                                CantBolas = 12;
+                                CantTubos = 4;
+                                tubo = 0;
+                                bolasTubo1 = 4;
+                                bolasTubo2 = 4;
+                                bolasTubo3 = 0;
+                                movimientos.ReiniciaMov();
+                                movimientos.push(500, 500, 500);
+                                
+                            }
 
                         }
                     }
@@ -334,10 +354,8 @@ void Juego::CargarJuego() {
                     {
                         if (BolitaSeleccionada == 1 || BolitaSeleccionada == 2 || BolitaSeleccionada == 3) {
                             Bolitas[BolaActual].setPosition(410, 130);
-                            tubo = 1;
-                           
+                            tubo = 1;  
                         }
-
                     }
 
                     if (TubosEnsayo[1].getGlobalBounds().contains(event.mouseMove.x, event.mouseMove.y))
@@ -474,6 +492,29 @@ void Juego::CargaEscenas() {
         window.draw(BtnReiniciarSpt);
         window.draw(BtnMenuSpt);
         window.draw(BtnMovAntSpt);
+
+        for (int i = 0; i < CantTubos; i++)
+        {
+            TubosEnsayo[i].setTexture(TuboEnsayoTx);
+            TubosEnsayo[i].setScale(0.35f, 0.35f);
+            window.draw(TubosEnsayo[i]);
+        }
+
+        for (int i = 0; i < CantBolas; i++)
+        {
+            window.draw(Bolitas[i]);
+        }
+
+        window.display();
+    }
+    if (Escena == 2)
+    {
+        window.clear();
+        window.draw(FondoMenuSpt);
+        window.draw(BtnReiniciarSpt);
+        window.draw(BtnMenuSpt);
+        window.draw(BtnMovAntSpt);
+
         for (int i = 0; i < CantTubos; i++)
         {
             TubosEnsayo[i].setTexture(TuboEnsayoTx);
@@ -510,57 +551,108 @@ void Juego::CargaEscenas() {
 
 void Juego::ManejoBolasLvl1()
 {
+    int num2;
+    if (lim == 0)
+    {
+        lim = 1;
 
-        int num2;
-        if (lim == 0)
+        num2 = 0;
+
+        for (int i = 0; i < 4; i++)
         {
-            lim = 1;
-
-            num2 = 0;
-
-            for (int i = 0; i < 4; i++)
-            {
-                BolitaSpt1.setColor(Color::Red);
-                Bolitas[i] = BolitaSpt1;
-                num2 = num2 + 100;
-            }
-
-            num2 = 0;
-
-            for (int i = 4; i < 8; i++)
-            {
-                BolitaSpt1.setColor(Color::Green);
-                Bolitas[i] = BolitaSpt1;
-                num2 = num2 + 100;
-            }
-    
-            //Tubos Ensayo
-            TubosEnsayo[0].setPosition(400, 200);
-            TubosEnsayo[1].setPosition(600, 200);
-            TubosEnsayo[2].setPosition(800, 200);
-            //T1
-            Bolitas[4].setPosition(410, 230);//1T1
-            Bolitas[0].setPosition(410, 280);//1T2
-            Bolitas[2].setPosition(410, 330);//1T3
-            Bolitas[6].setPosition(410, 380); //1T4
-            
-            tubos[0].push(6);
-            tubos[0].push(2);
-            tubos[0].push(0);
-            tubos[0].push(4);
-            //T2
-            Bolitas[3].setPosition(610, 230);//2T1
-            Bolitas[7].setPosition(610, 280);//2T2
-            Bolitas[1].setPosition(610, 330);//2T3
-            Bolitas[5].setPosition(610, 380);//2T4
-           
-           
-            tubos[1].push(5);
-            tubos[1].push(1);
-            tubos[1].push(7);
-            tubos[1].push(3);
+            BolitaSpt1.setColor(Color::Red);
+            Bolitas[i] = BolitaSpt1;
+            num2 = num2 + 100;
         }
-      
+
+        num2 = 0;
+
+        for (int i = 4; i < 8; i++)
+        {
+            BolitaSpt1.setColor(Color::Green);
+            Bolitas[i] = BolitaSpt1;
+            num2 = num2 + 100;
+        }
+
+        //Tubos Ensayo
+        TubosEnsayo[0].setPosition(400, 200);
+        TubosEnsayo[1].setPosition(600, 200);
+        TubosEnsayo[2].setPosition(800, 200);
+        //T1
+        Bolitas[4].setPosition(410, 230);//1T1
+        Bolitas[0].setPosition(410, 280);//1T2
+        Bolitas[2].setPosition(410, 330);//1T3
+        Bolitas[6].setPosition(410, 380); //1T4
+
+        tubos[0].push(6);
+        tubos[0].push(2);
+        tubos[0].push(0);
+        tubos[0].push(4);
+        //T2
+        Bolitas[3].setPosition(610, 230);//2T1
+        Bolitas[7].setPosition(610, 280);//2T2
+        Bolitas[1].setPosition(610, 330);//2T3
+        Bolitas[5].setPosition(610, 380);//2T4
+
+
+        tubos[1].push(5);
+        tubos[1].push(1);
+        tubos[1].push(7);
+        tubos[1].push(3);
+    }   
+}
+
+void Juego::ManejoBolasLvl2()
+{
+    int num2;
+    if (lim == 0)
+    {
+        lim = 1;
+
+        num2 = 0;
+
+        for (int i = 0; i < 4; i++)
+        {
+            BolitaSpt1.setColor(Color::Red);
+            Bolitas[i] = BolitaSpt1;
+            num2 = num2 + 100;
+        }
+
+        num2 = 0;
+
+        for (int i = 4; i < 8; i++)
+        {
+            BolitaSpt1.setColor(Color::Green);
+            Bolitas[i] = BolitaSpt1;
+            num2 = num2 + 100;
+        }
+
+        //Tubos Ensayo
+        TubosEnsayo[0].setPosition(400, 200);
+        TubosEnsayo[1].setPosition(600, 200);
+        TubosEnsayo[2].setPosition(800, 200);
+        //T1
+        Bolitas[4].setPosition(410, 230);//1T1
+        Bolitas[0].setPosition(410, 280);//1T2
+        Bolitas[2].setPosition(410, 330);//1T3
+        Bolitas[6].setPosition(410, 380); //1T4
+
+        tubos[0].push(6);
+        tubos[0].push(2);
+        tubos[0].push(0);
+        tubos[0].push(4);
+        //T2
+        Bolitas[3].setPosition(610, 230);//2T1
+        Bolitas[7].setPosition(610, 280);//2T2
+        Bolitas[1].setPosition(610, 330);//2T3
+        Bolitas[5].setPosition(610, 380);//2T4
+
+
+        tubos[1].push(5);
+        tubos[1].push(1);
+        tubos[1].push(7);
+        tubos[1].push(3);
+    }
 }
 int Juego::saberXY(int x) {
     if (x == 0) {
@@ -671,6 +763,7 @@ void Juego::Victoria()
         if (TubosCompletados == 2)
         {
             Escena = 10;
+            NivelesGanados = 1;
             Cargartexturas();
         }
     }

@@ -28,7 +28,7 @@ private:
 	int y =0;
 	int TubosCompletados=0; //Muestra la cantidad de tubos que ya se encuentran llenos de forma correcta
 	int CantMov = 0; //Lleva la cuenta de la cantidad movimientos que ha retrocedido, para limitar a 5
-
+	int NivelesGanados = 0;
 	//Texturas
 	Texture	BtnJugarTx;
 	Texture BtnAcercaDeTx;
@@ -68,6 +68,7 @@ private:
 	void Cargartexturas();
 	void CargaEscenas();
 	void ManejoBolasLvl1();
+	void ManejoBolasLvl2();
 	int saberXY(int);
 	void Victoria();
 	void Movimientos();

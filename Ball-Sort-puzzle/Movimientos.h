@@ -15,6 +15,8 @@ class Movimientos
 
 		void push(int,int, int);
 			
+		void ReiniciaMov();
+
 		Nodo* pop();
 			
 		Nodo* top();

@@ -36,3 +36,9 @@ Nodo* Movimientos::pop() {
 Nodo* Movimientos::top() {
 	return tope;
 }
+
+void Movimientos::ReiniciaMov()
+{
+	tope = NULL;
+	ini = NULL;
+}
