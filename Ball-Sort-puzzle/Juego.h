@@ -30,6 +30,10 @@ private:
 	Texture BtnAcercaDeTx;
 	Texture BtnSalirTx;
 	Texture UNATx;
+	Texture BtnDevolverseTx;
+	Texture BtnMenuTx;
+	Texture BtnSigTx;
+	Texture BtnReiniciarTx;
 	Texture LogoInicialTx;
 	Texture FondoMenuTx;
 	Texture TuboEnsayoTx;
@@ -38,6 +42,10 @@ private:
 	Sprite BtnJugarSpt;
 	Sprite BtnAcercaDeSpt;
 	Sprite BtnSalirSpt;
+	Sprite BtnDevolverseSpt;
+	Sprite BtnMenuSpt;
+	Sprite BtnSigSpt;
+	Sprite BtnReiniciarSpt;
 	Sprite UNASpt;
 	Sprite LogoInicialSpt;
 	Sprite FondoMenuSpt;

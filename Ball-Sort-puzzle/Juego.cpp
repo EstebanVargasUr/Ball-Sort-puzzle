@@ -244,7 +244,11 @@ void Juego::CargarJuego() {
                             }
                         }
                     }
-                  
+                    if (Escena == 6) {
+                        if (BtnDevolverseSpt.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
+                            Escena = 0;
+                        }
+                    }
                    
 
 
@@ -331,6 +335,26 @@ void Juego::Cargartexturas() {
     BtnSalirSpt.setPosition(Vector2f(500.f, 520.f));
     BtnSalirSpt.setScale(0.8f, 0.7f);
 
+    BtnDevolverseTx.loadFromFile("btnDevolver.png");
+    BtnDevolverseSpt.setTexture(BtnDevolverseTx);
+    BtnDevolverseSpt.setPosition(Vector2f(50.f, 600.f));
+    BtnDevolverseSpt.setScale(0.5f, 0.4f);
+
+    BtnMenuTx.loadFromFile("menu.png");
+    BtnMenuSpt.setTexture(BtnMenuTx);
+    BtnMenuSpt.setPosition(Vector2f(50.f, 600.f));
+    BtnMenuSpt.setScale(0.5f, 0.4f);
+
+    BtnSigTx.loadFromFile("siguiente.png");
+    BtnSigSpt.setTexture(BtnSigTx);
+    BtnSigSpt.setPosition(Vector2f(50.f, 600.f));
+    BtnSigSpt.setScale(0.5f, 0.4f);
+
+    BtnReiniciarTx.loadFromFile("reiniciar.png");
+    BtnReiniciarSpt.setTexture(BtnReiniciarTx);
+    BtnReiniciarSpt.setPosition(Vector2f(50.f, 600.f));
+    BtnReiniciarSpt.setScale(0.5f, 0.4f);
+
     TuboEnsayoTx.loadFromFile("TuboEnsayoB.png");
     TuboEnsayoTx.setSmooth(true);
     TuboEnsayoSpt.setTexture(TuboEnsayoTx);
@@ -377,6 +401,7 @@ void Juego::CargaEscenas() {
         window.clear();
         window.draw(FondoMenuSpt);
         window.draw(UNASpt);
+        window.draw(BtnDevolverseSpt);
         window.display();
     }
 }
