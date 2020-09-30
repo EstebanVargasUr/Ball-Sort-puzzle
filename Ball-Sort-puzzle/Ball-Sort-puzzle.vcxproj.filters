@@ -33,8 +33,14 @@
     <ClCompile Include="Movimientos.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Repeticion.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="pch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="Tubo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -47,8 +53,8 @@
     <ClInclude Include="Movimientos.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="pch.h">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="Repeticion.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

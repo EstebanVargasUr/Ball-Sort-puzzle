@@ -7,10 +7,8 @@ void Juego::CargarJuego() {
     window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
     Cargartexturas();
     
-    // run the program as long as the window is open
     while (window.isOpen())
     {
-        // check all the window's events that were triggered since the last iteration of the loop
         while (window.pollEvent(event))
         {
             switch (event.type)
@@ -28,22 +26,8 @@ void Juego::CargarJuego() {
                     if (Escena == 0) {
                         if (BtnJugarSpt.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y))
                         {
-                            Escena = 1;
-                            window.setTitle("NIVEL 1");
-                            Bolitas = new Sprite[8];
-                            tubos = new Tubo[3];
-                            for (int i = 0; i < 3; i++)
-                                tubos[i].push(500);
-
-                            TubosEnsayo = new Sprite[3];
-                            CantBolas = 8;
-                            CantTubos = 3;
-                            tubo = 0;
-                            bolasTubo1 = 4;
-                            bolasTubo2 = 4;
-                            bolasTubo3 = 0;
-                            movimientos.push(500,500,500);
-                            ManejoBolasLvl1();
+                            Escena = 11;
+                           
                         }
                         if (BtnAcercaDeSpt.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y))
                         {
@@ -522,28 +506,147 @@ void Juego::CargarJuego() {
                             }
                         }
                     }
-                    if (Escena == 6) {
+                    if (Escena == 6 || Escena == 11) 
+                    {
                         if (BtnDevolverseSpt.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
                             Escena = 0;
                         }
                     }
-
-                    if (Escena != 0)
+                    if (Escena == 11)
                     {
-                        if (BtnMenuSpt.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y))
-                        {
-                            Escena = 0;
+                        if (BtnNiv1Spt.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
+                            Escena = 1;
+                            window.setTitle("NIVEL 1");
                             Bolitas = new Sprite[8];
                             tubos = new Tubo[3];
                             TubosEnsayo = new Sprite[3];
 
                             for (int i = 0; i < 3; i++)
+                            tubos[i].push(500);
+
+                            CantBolas = 8; CantTubos = 3; tubo = 0; lim = 0;
+                            bolasTubo1 = 4; bolasTubo2 = 4; bolasTubo3 = 0;
+                            CantMov = 0;  NivelesGanados = 0;
+
+                            Cargartexturas();
+                            ManejoBolasLvl1();
+                            CargaEscenas();
+                        }
+
+                        if (BtnNiv2Spt.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y))
+                        {
+                            Escena = 2;
+                            window.setTitle("NIVEL 2");
+                            Bolitas = new Sprite[12];
+                            tubos = new Tubo[5];
+                            TubosEnsayo = new Sprite[5];
+
+                            for (int i = 0; i < 5; i++)
                                 tubos[i].push(500);
 
-                            
-                            CantBolas = 8;  CantTubos = 3; tubo = 0;
-                            bolasTubo1 = 4; bolasTubo2 = 4; bolasTubo3 = 0;
-                            lim = 0;    CantMov = 0;
+                            CantTubos = 5;  CantBolas = 12;
+                            tubo = 0;   lim = 0; CantMov = 0;
+
+                            bolasTubo1 = 4; bolasTubo2 = 4;
+                            bolasTubo3 = 0; bolasTubo4 = 4; bolasTubo5 = 0;
+                            NivelesGanados = 0;
+
+                            movimientos.ReiniciaMov();
+                            movimientos.push(500, 500, 500);
+
+                            Cargartexturas();
+                            ManejoBolasLvl2();
+                            CargaEscenas();
+                        }
+
+                        if (BtnNiv3Spt.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y))
+                        {
+                            Escena = 3;
+                            window.setTitle("NIVEL 3");
+                            Bolitas = new Sprite[12];
+                            tubos = new Tubo[5];
+                            TubosEnsayo = new Sprite[5];
+
+                            for (int i = 0; i < 5; i++)
+                                tubos[i].push(500);
+
+                            CantTubos = 5;  CantBolas = 12;
+                            tubo = 0;   lim = 0; CantMov = 0;
+
+                            bolasTubo1 = 4; bolasTubo2 = 2;
+                            bolasTubo3 = 3; bolasTubo4 = 0; bolasTubo5 = 3;
+                            NivelesGanados = 0;
+
+                            movimientos.ReiniciaMov();
+                            movimientos.push(500, 500, 500);
+
+                            Cargartexturas();
+                            ManejoBolasLvl3();
+                            CargaEscenas();
+                        }
+
+                        if (BtnNiv4Spt.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y))
+                        {
+                            Escena = 4;
+                            window.setTitle("NIVEL 4");
+                            Bolitas = new Sprite[16];
+                            tubos = new Tubo[5];
+                            TubosEnsayo = new Sprite[5];
+
+                            for (int i = 0; i < 5; i++)
+                                tubos[i].push(500);
+
+                            CantTubos = 5;  CantBolas = 16;
+                            tubo = 0;   lim = 0; CantMov = 0;
+
+                            bolasTubo1 = 4; bolasTubo2 = 4;
+                            bolasTubo3 = 4; bolasTubo4 = 3; bolasTubo5 = 1;
+                            NivelesGanados = 0;
+
+                            movimientos.ReiniciaMov();
+                            movimientos.push(500, 500, 500);
+
+                            Cargartexturas();
+                            ManejoBolasLvl4();
+                            CargaEscenas();
+                        }
+
+                        if (BtnNiv5Spt.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y))
+                        {
+                            Escena = 5;
+                            window.setTitle("NIVEL 5");
+                            Bolitas = new Sprite[16];
+                            tubos = new Tubo[5];
+                            TubosEnsayo = new Sprite[5];
+
+                            for (int i = 0; i < 5; i++)
+                                tubos[i].push(500);
+
+                            CantTubos = 5;  CantBolas = 16;
+                            tubo = 0;   lim = 0; CantMov = 0;
+
+                            bolasTubo1 = 3; bolasTubo2 = 3;
+                            bolasTubo3 = 4; bolasTubo4 = 3; bolasTubo5 = 3;
+                            NivelesGanados = 0;
+
+                            movimientos.ReiniciaMov();
+                            movimientos.push(500, 500, 500);
+
+                            Cargartexturas();
+                            ManejoBolasLvl5();
+                            CargaEscenas();
+                        }
+                    }
+                    if (Escena != 0)
+                    {
+                        if (BtnHomeSpt.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y))
+                        {
+                            Escena = 0;
+                        }
+
+                        if (BtnMenuSpt.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y))
+                        {
+                            Escena = 11;
                         }
 
                         if (BtnReiniciarSpt.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y))
@@ -566,7 +669,6 @@ void Juego::CargarJuego() {
                                 ManejoBolasLvl1();
                                 CargaEscenas();
                             }
-                           
                             if (Escena == 2)
                             {
                                 window.setTitle("NIVEL 2");
@@ -591,7 +693,6 @@ void Juego::CargarJuego() {
                                 ManejoBolasLvl2();
                                 CargaEscenas();
                             }
-
                             if (Escena == 3)
                             {
                                 window.setTitle("NIVEL 3");
@@ -854,8 +955,9 @@ void Juego::CargarJuego() {
                         }
                     }
                 }
+
                 break;
-                // we don't process other types of events
+ 
             default:
                 break;
             }
@@ -907,11 +1009,6 @@ void Juego::Cargartexturas() {
     BtnMenuSpt.setPosition(Vector2f(1062, 295));
     BtnMenuSpt.setScale(0.4f, 0.4f);
 
-    BtnSigTx.loadFromFile("siguiente.png");
-    BtnSigSpt.setTexture(BtnSigTx);
-    BtnSigSpt.setPosition(Vector2f(730.f, 315));
-    BtnSigSpt.setScale(0.5f, 0.5f);
-
     BtnReiniciarTx.loadFromFile("reiniciar.png");
     BtnReiniciarSpt.setTexture(BtnReiniciarTx);
     BtnReiniciarSpt.setPosition(Vector2f(1050, 180));
@@ -932,18 +1029,63 @@ void Juego::Cargartexturas() {
     VictoriaSpt.setPosition(Vector2f(410, 80));
     VictoriaSpt.setScale(1.3, 1.3);
 
+    BtnGuardarTx.loadFromFile("btnGuardar.png");
+    BtnGuardarSpt.setTexture(BtnGuardarTx);
+    BtnGuardarSpt.setPosition(Vector2f(1065, 65));
+    BtnGuardarSpt.setScale(0.8,0.8);
+
     BtnMovAntTx.loadFromFile("btnMovAnt.png");
     BtnMovAntSpt.setTexture(BtnMovAntTx);
     BtnMovAntSpt.setPosition(Vector2f(1065, 390));
     BtnMovAntSpt.setScale(0.8,0.8);
 
+    BtnHomeTx.loadFromFile("btnHome.png");
+    BtnHomeSpt.setTexture(BtnHomeTx);
+    BtnHomeSpt.setPosition(Vector2f(1065, 490));
+    BtnHomeSpt.setScale(0.75, 0.75);
+
+    BtnNiv1Tx.loadFromFile("btnNivel1.png");
+    BtnNiv1Spt.setTexture(BtnNiv1Tx);
+    BtnNiv1Spt.setPosition(Vector2f(100, 200));
+    BtnNiv1Spt.setScale(0.75, 0.75);
+
+    BtnNiv2Tx.loadFromFile("btnNivel2.png");
+    BtnNiv2Spt.setTexture(BtnNiv2Tx);
+    BtnNiv2Spt.setPosition(Vector2f(500, 200));
+    BtnNiv2Spt.setScale(0.75, 0.75);
+
+    BtnNiv3Tx.loadFromFile("btnNivel3.png");
+    BtnNiv3Spt.setTexture(BtnNiv3Tx);
+    BtnNiv3Spt.setPosition(Vector2f(900, 200));
+    BtnNiv3Spt.setScale(0.75, 0.75);
+
+    BtnNiv4Tx.loadFromFile("btnNivel4.png");
+    BtnNiv4Spt.setTexture(BtnNiv4Tx);
+    BtnNiv4Spt.setPosition(Vector2f(300, 400));
+    BtnNiv4Spt.setScale(0.75, 0.75);
+
+    BtnNiv5Tx.loadFromFile("btnNivel5.png");
+    BtnNiv5Spt.setTexture(BtnNiv5Tx);
+    BtnNiv5Spt.setPosition(Vector2f(700, 400));
+    BtnNiv5Spt.setScale(0.75, 0.75);
+
+    BtnSigTx.loadFromFile("siguiente.png");
+    BtnSigSpt.setTexture(BtnSigTx);
+    BtnSigSpt.setPosition(Vector2f(800.f, 315));
+    BtnSigSpt.setScale(0.5f, 0.5f);
+
+    BtnRepeticionTx.loadFromFile("btnRepeticion.png");
+    BtnRepeticionSpt.setTexture(BtnRepeticionTx);
+    BtnRepeticionSpt.setPosition(Vector2f(615, 308));
+    BtnRepeticionSpt.setScale(1, 1);
+
     if (NivelesGanados != 0) 
     {
-        BtnReiniciarSpt.setPosition(Vector2f(530.f, 300.f));
-        BtnReiniciarSpt.setScale(0.5f, 0.5f);
-
-        BtnMenuSpt.setPosition(Vector2f(370.f, 308.f));
+        BtnMenuSpt.setPosition(Vector2f(270.f, 308.f));
         BtnMenuSpt.setScale(0.5f, 0.5f);
+
+        BtnHomeSpt.setPosition(Vector2f(440.f, 308.f));
+        BtnHomeSpt.setScale(1, 1);
 
     }
 }
@@ -961,13 +1103,15 @@ void Juego::CargaEscenas() {
         window.display();
     }
 
-    if (Escena != 0 && Escena != 10 & Escena != 6)
+    if (Escena != 0 && Escena != 10 & Escena != 6 && Escena != 11)
     {
         window.clear();
         window.draw(FondoMenuSpt);
         window.draw(BtnReiniciarSpt);
         window.draw(BtnMenuSpt);
         window.draw(BtnMovAntSpt);
+        window.draw(BtnHomeSpt);
+        window.draw(BtnGuardarSpt);
 
         for (int i = 0; i < CantTubos; i++)
         {
@@ -996,10 +1140,23 @@ void Juego::CargaEscenas() {
         window.draw(FondoMenuSpt);
         window.draw(VictoriaSpt);
         window.draw(BtnMenuSpt);
+        window.draw(BtnHomeSpt);
+        window.draw(BtnRepeticionSpt);
         if (NivelesGanados != 5) {
             window.draw(BtnSigSpt);
-            
         }
+        window.display();
+    }
+    if (Escena == 11)
+    {
+        window.clear();
+        window.draw(FondoMenuSpt);
+        window.draw(BtnDevolverseSpt);
+        window.draw(BtnNiv1Spt);
+        window.draw(BtnNiv2Spt);
+        window.draw(BtnNiv3Spt);
+        window.draw(BtnNiv4Spt);
+        window.draw(BtnNiv5Spt);
         window.display();
     }
 }
@@ -1194,6 +1351,7 @@ void Juego::ManejoBolasLvl3()
         
     }
 }
+
 void Juego::ManejoBolasLvl4()
 {
     if (lim == 0)
@@ -1208,7 +1366,7 @@ void Juego::ManejoBolasLvl4()
 
         for (int i = 4; i < 8; i++)
         {
-            BolitaSpt1.setColor(Color::Blue);
+            BolitaSpt1.setColor(Color::White);
             Bolitas[i] = BolitaSpt1;
         }
 
@@ -1271,6 +1429,7 @@ void Juego::ManejoBolasLvl4()
         tubos[4].push(11);
     }
 }
+
 void Juego::ManejoBolasLvl5()
 {
     if (lim == 0)
@@ -1349,6 +1508,7 @@ void Juego::ManejoBolasLvl5()
         tubos[4].push(10);
     }
 }
+
 int Juego::saberXY(int x, int esc) {
     if (esc == 1)
     {
@@ -1397,7 +1557,6 @@ void Juego::Movimientos()
             {
                 if (bolasTubo1 == i && movimientos.top()->getTuboDestino() == 1)
                 {
-                    cout << "entra" << endl;
                     if (movimientos.top()->getTuboOrigen() == 2)
                         bolasTubo2 = bolasTubo2 - 1;
                     if (movimientos.top()->getTuboOrigen() == 3)
