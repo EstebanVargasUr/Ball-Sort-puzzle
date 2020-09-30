@@ -904,7 +904,7 @@ void Juego::Cargartexturas() {
 
     BtnMenuTx.loadFromFile("menu.png");
     BtnMenuSpt.setTexture(BtnMenuTx);
-    BtnMenuSpt.setPosition(Vector2f(1062, 360));
+    BtnMenuSpt.setPosition(Vector2f(1062, 295));
     BtnMenuSpt.setScale(0.4f, 0.4f);
 
     BtnSigTx.loadFromFile("siguiente.png");
@@ -914,7 +914,7 @@ void Juego::Cargartexturas() {
 
     BtnReiniciarTx.loadFromFile("reiniciar.png");
     BtnReiniciarSpt.setTexture(BtnReiniciarTx);
-    BtnReiniciarSpt.setPosition(Vector2f(1050, 200));
+    BtnReiniciarSpt.setPosition(Vector2f(1050, 180));
     BtnReiniciarSpt.setScale(0.4f, 0.4f);
 
     TuboEnsayoTx.loadFromFile("TuboEnsayoB.png");
@@ -934,7 +934,7 @@ void Juego::Cargartexturas() {
 
     BtnMovAntTx.loadFromFile("btnMovAnt.png");
     BtnMovAntSpt.setTexture(BtnMovAntTx);
-    BtnMovAntSpt.setPosition(Vector2f(1065, 480));
+    BtnMovAntSpt.setPosition(Vector2f(1065, 390));
     BtnMovAntSpt.setScale(0.8,0.8);
 
     if (NivelesGanados != 0) 
@@ -996,9 +996,10 @@ void Juego::CargaEscenas() {
         window.draw(FondoMenuSpt);
         window.draw(VictoriaSpt);
         window.draw(BtnMenuSpt);
-        window.draw(BtnReiniciarSpt);
-        window.draw(BtnSigSpt);
-
+        if (NivelesGanados != 5) {
+            window.draw(BtnSigSpt);
+            
+        }
         window.display();
     }
 }
