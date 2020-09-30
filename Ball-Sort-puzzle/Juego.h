@@ -23,7 +23,7 @@ private:
 	int BolaActual=0;
 	int bolasTubo1=0;
 	int bolasTubo2=0;
-	int bolasTubo3 = 0, bolasTubo4 = 0, bolasTubo5 = 0;
+	int bolasTubo3 = 0, bolasTubo4 = 0, bolasTubo5 = 0, bolasTubo6=0;
 	int tubo=0; //En el tubo donde se encuentra la bola
 	int y =0;
 	int TubosCompletados=0; //Muestra la cantidad de tubos que ya se encuentran llenos de forma correcta
@@ -70,6 +70,8 @@ private:
 	void ManejoBolasLvl1();
 	void ManejoBolasLvl2();
 	void ManejoBolasLvl3();
+	void ManejoBolasLvl4();
+	void ManejoBolasLvl5();
 	int saberXY(int,int);
 	void Victoria();
 	void Movimientos();
